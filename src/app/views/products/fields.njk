@@ -1,0 +1,120 @@
+<div class="item">
+    <div>Categoria</div>
+    <div>
+        <select name="category_id">
+            {% for category in categories %}
+                <option value="{{category.id}}"
+                    {% if product.category_id== "category.id"%} selected {% endif %}>
+                    {{category.name}}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<div class="item">
+    <div>Título</div>
+        <div> 
+            <input 
+                type="text" 
+                name="name"
+                placeholder="Digite o nome do anúncio..."
+                value="{{product.name}}"> 
+        </div>
+</div>
+
+<div class="item">
+    <div>Descrição</div>
+        <div> 
+            <textarea name="description">{{product.description}}</textarea>
+        </div>
+</div>
+
+<div class="item">
+    <div>Fotos</div>
+        <div> 
+            <div class="photos_upload">
+                <input 
+                    id="photos_input"
+                    type="file"
+                    name="photos"
+                    multiple 
+                    accept="image/*"
+                    onchange="Photos_Upload.handle_file_input(event)">
+                <p>Selecione até 06 Fotos</p>
+            </div>
+
+            <div class="photos_preview">
+                {% if files %}
+                    {% for image in files %}
+                        <div class="photo" id="{{image.id}}">
+                            <img src="{{image.src}}" alt="{{image.name}}">
+                                <i class="material-icons"
+                                onclick="Photos_Upload.remove_old_photo(event)"
+                                >close
+                            </i>
+                        </div>
+                    {% endfor %}
+                    <input type="hidden" name="removed_files">
+                {% endif %}
+            </div>
+        </div>
+</div>
+
+{# multiple --> aceita vários arquivos
+accept --> aceita todo tipo de imagem #}
+
+<div class="item">
+    <div>Preço</div>
+        <div> 
+            <input 
+                type="text" 
+                name="price"
+                placeholder="Digite o preço do produto..."
+                value="{{product.price}}"
+                onkeydown= "Mask.apply(this, 'formatBRL')"> 
+        </div>
+    {% if product.old_price %}
+        <input type="hidden" name="old_price" value="{{product.old_price}}">
+    {% endif %}
+</div>
+
+<div class="item">
+    <div>Quantidade</div>
+        <div> 
+            <input 
+                type="number" 
+                name="quantity"
+                placeholder="Estoque disponível..."
+                value="{{product.quantity}}"> 
+        </div>
+</div>
+
+{% if (products.status =="1") or (products.status == "0") %} 
+{#com esse if, o campo de disponobilidade só vai aparecer quando for editar o produto
+quando for criar ele não vai aparecer#}
+<div class="item">
+    <div>Disponível ?</div>
+        <div>
+            <span> 
+                <input 
+                    type="radio" 
+                    name="status" 
+                    value="1" 
+                    {% if product.status == '1' %} 
+                    checked
+                    {% endif %}>Sim
+            </span>
+
+            <span> 
+                <input 
+                    type="radio" 
+                    name="status" 
+                    value="0"
+                    {% if product.status == '0' %} 
+                    checked
+                    {% endif %}>Não
+            </span>
+        </div>
+</div>
+{% endif %}
