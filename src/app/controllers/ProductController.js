@@ -7,7 +7,8 @@ const File = require('../models/File')
 module.exports = {
     async create(req, res) {
         try {
-            const categories = await Category.all()
+            let results = await Category.all()
+            const categories = results.rows
                 
             return res.render('products/create', {categories})
         } catch (error) {
@@ -36,7 +37,7 @@ module.exports = {
         })})
         await Promise.all(files_promise)
 
-        return res.redirect(`/products/${productId}/edit`)
+        return res.redirect(`/products/${productId}`)
     },
 
     async show(req,res){
@@ -55,7 +56,9 @@ module.exports = {
             day:`${day}/${month}/${year}`,
         }
 
-        product.oldPrice = formatPrice(product.old_price)
+        if(product.old_price) {
+            product.oldPrice = formatPrice(product.old_price)
+        }
         product.price = formatPrice(product.price)
 
         result = await Product.files(product.id)
@@ -127,7 +130,6 @@ module.exports = {
             
         }
 
-       
         req.body.price = req.body.price.replace(/\D/g, "")
 
         if(req.body.old_price != req.body.price){
