@@ -61,7 +61,7 @@ module.exports = {
         }
         product.price = formatPrice(product.price)
 
-        result = await Product.files(product.id)
+        results = await Product.files(product.id)
         const files = results.rows.map(file => ({
             ...file,
             src:`${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
