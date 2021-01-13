@@ -8,15 +8,24 @@
 
 <aside>
     <div class="header">
-        <h2>Computador</h2>
-        <p>12 encontrados</p>
-    </div>
+        <h2>{{search.term}}</h2>
+        <p>
+                        {% if search.total == 0 %}
+                            <p>Sem Produtos</p>
+                        {% elseif search.total == 1 %}
+                            <p>{{search.total}} Encontrado</p>
+                        {%else%}
+                            <p>{{search.total}} Encontrados</p>
+                        {% endif %} 
+                    </p>
+        </div>
 
     <nav class="categories">
         <h4>Categorias</h4>
         <ul>
-            <li><a href="#">Eletrônicos</a></li>
-            <li><a href="#">Comida</a></li>
+            {% for category in categories %}
+                <li><a href="/search?filter={{search.term}}&category={{category.id}}">{{category.name}}</a></li>
+            {% endfor %}
         </ul>
     </nav>
 </aside>

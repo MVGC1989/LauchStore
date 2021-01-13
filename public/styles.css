@@ -497,14 +497,15 @@ form .item .photos_preview img{
     color: #333;
 }
 
-.search-products header h2{
+.search-products .header h2{
     font-size: 26px;
     text-transform: capitalize;
     margin-bottom: 8px;
 }
 
-.search-products nav h4{
+.categories h4{
     margin-bottom: 16px;
+    margin-top: 16px;
     color: #333;
     font-size: 14px;
     text-transform: uppercase;
