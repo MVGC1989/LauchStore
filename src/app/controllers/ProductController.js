@@ -118,7 +118,7 @@ module.exports = {
 
             //validar se já não existem 06 fotos no total
             const oldFiles = await Product.files(req.body.id)
-            const totalFiles = oldFiles.rows.lenght + req.files.lenght
+            const totalFiles = oldFiles.rows.length + req.files.length
 
             if(totalFiles <= 6){
                 const new_files_promise = req.files.map(file=>File.create({
