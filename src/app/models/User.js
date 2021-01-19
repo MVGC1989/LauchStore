@@ -1,16 +1,17 @@
-const { create } = require("browser-sync")
+
 const db = require("../../config/db")
 const {hash} = require("bcryptjs")//npm install bcryptjs
 
+
 module.exports = {
-    async  findOne(){
+    async  findOne(filters){
         let query = "SELECT * FROM users"
 
         Object.keys(filters).map(key =>{
             query = `${query} ${key}`
 
             Object.keys(filters[key]).map(field =>{
-                query = `${query} ${field} = ${filter[key] [field]}`
+                query = `${query} ${field} = ${filters[key] [field]}`
             })
         })
 
@@ -51,5 +52,25 @@ module.exports = {
             console.error(error)
         }
         
+    },
+
+    async update(id , fields){
+        let query = "UPDATE users SET"
+
+        Object.keys(fields).map((key , index, array) => {
+            if((index + 1) < array.length){
+                query = `${query}
+                    ${key} = '${fields[key]}',
+                    `
+            }else {
+                query = `${query}
+                    ${key} = '${fields[key]}'
+                    WHERE id = ${id}
+                    `
+            }
+        })
+
+        await db.query(query)
+        return
     }
 }

@@ -1,16 +1,40 @@
 const User = require("../models/User")
+const {compare} = require('bcryptjs')
+
+function checkAllFields(body){
+    const keys = Object.keys(body) 
+        for( key of keys){
+            if(body[key]== ""){
+                return {
+                    user: body,
+                    error: "Por favor, preencha todos os campos !"
+                }
+            }
+        }
+}
+
+async function show (req, res, next){
+    const {userId : id} = req.session
+
+    const user = await User.findOne({where: {id}})
+
+    if(!user) return res.render("user/register", {
+        error: "Usuário não encontrado !"
+    })
+
+    req.user = user
+
+    next()
+}
 
 async function post (req , res , next){
      //checar se todos os campos estão preenchidos
 
-    const keys = Object.keys(req.body) 
-        for( key of keys){
-            if(req.body[key]== ""){
-                return res.render("user/register", {
-                    user: req.body,
-                    error: "Por favor, preencha todos os campos !"
-            })}
-        }
+    const fillAllFields = checkAllFields(req.body)
+
+    if(fillAllFields){
+        return res,render("user/register", fillAllFields)
+    }
 
      //checar se usuário já existe
 
@@ -40,6 +64,40 @@ async function post (req , res , next){
         next()
 }
 
+async function update(req, res, next){
+    //checando campos
+    const fillAllFields = checkAllFields(req.body)
+
+    if(fillAllFields){
+        return res,render("user/index", fillAllFields)
+    }
+
+    //checando se a senha foi preenchida
+
+    const {id , password} = req.body
+
+    if(!password) return res.render("user/index", {
+        user: req.body,
+        erro: "É necessário digitar sua senha para atualizar o cadastro !"
+    })
+
+    //ver se a senha esta certa
+
+    const user = await User.findOne({ where: {id}})
+
+    const passed = await compare(password , user.password)
+
+    if(!passed) return res.render("user/index", {
+        user: req.body,
+        erro: "Senha incorreta !"
+    })
+
+    req.user = user
+
+    next()
+}
 module.exports = {
-    post
+    post,
+    show,
+    update
 }

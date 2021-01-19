@@ -1,12 +1,14 @@
 // INICIANDO O SERVIDOR
 
-let express = require('express')
-let nunjucks = require('nunjucks') 
-let routes = require("./routes")
-let method_override = require("method-override")
+const express = require('express')
+const nunjucks = require('nunjucks') 
+const routes = require("./routes")
+const method_override = require("method-override")
+const session = require('./config/session')
 
-let server = express()
+const server = express()
 
+server.use(session)
 server.use(express.urlencoded({extended: true}))
 server.use(express.static('public')) 
 server.use(method_override("_method"))
