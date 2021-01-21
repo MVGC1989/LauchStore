@@ -529,13 +529,13 @@ form .item .photos_preview img{
     max-width: 500px;
 }
 
-.form input[name="email"],
+/*.form input[name="email"],
 .form input[name="password"],
 .form input[name="passwordRepeat"],
 .form input[name="cpf-cnpj"],
 .form input[name="cep"]{
     max-width: 60%;
-}
+}*/
 
 /*===VALIDADE ERROR===*/
 
@@ -547,5 +547,5 @@ form .item .photos_preview img{
     text-align: center;
     margin-top: 6px;
     font-weight: bold;
-    width: 270px;
+    
 }

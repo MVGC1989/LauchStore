@@ -1,2 +1,2 @@
 # LauchStore
- Site de compra/venda feito durante o Bootcamp LauchBase
+ Site de e-commerce feito durante o Bootcamp LauchBase

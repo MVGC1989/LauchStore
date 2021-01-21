@@ -13,7 +13,7 @@ routes.use("/users", users)//vai colocar um /users em todas as rotas dos usuári
 //HOME
 routes.get('/', HomeController.index)
 
-//ALIAS
+//ATALHOS
 routes.get('/ads/create', function(req , res){
     return res.redirect("/products/create" )
 })

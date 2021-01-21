@@ -9,6 +9,11 @@ const session = require('./config/session')
 const server = express()
 
 server.use(session)
+server.use((req, res, next) => {//permite q o nunjuks use o session em todos os lugares
+    res.locals.session = req.session
+    next()
+})
+
 server.use(express.urlencoded({extended: true}))
 server.use(express.static('public')) 
 server.use(method_override("_method"))

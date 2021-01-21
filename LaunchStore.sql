@@ -42,6 +42,11 @@ CREATE TABLE "users" (
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp DEFAULT (now())
 );
+
+--TOKEN DE RECUPERAÇÃO DE SENHA
+ALTER TABLE "users" ADD COLUMN reset_token text;
+ALTER TABLE "users" ADD COLUMN reset_token_expires text;
+
 --CONNECT PG SIMPLE TABLE
 CREATE TABLE "session"(
   "sid" varchar NOT NULL COLLATE "default",
@@ -81,3 +86,21 @@ BEFORE UPDATE ON users
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();
 
+--Remoção de conteúdos em cascata usuário
+--Ao deletar usuário exclui seus produtos
+ALTER TABLE "products"
+DROP CONSTRAINT products_user_id_fkey,
+ADD CONSTRAINT products_user_id_fkey
+FOREIGN KEY ("user_id")
+REFERENCES "users" ("id")
+ON DELETE CASCADE;
+
+
+--Remoção de conteúdos em cascata produto
+--Ao deletar produtos exclui os arquivos
+ALTER TABLE "files"
+DROP CONSTRAINT files_product_id_fkey,
+ADD CONSTRAINT files_product_id_fkey
+FOREIGN KEY ("product_id")
+REFERENCES "products" ("id")
+ON DELETE CASCADE;

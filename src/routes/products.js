@@ -5,15 +5,17 @@ const multer = require("../app/middlewares/multer")
 const SearchController = require("../app/controllers/SearchController")
 const ProductController = require("../app/controllers/ProductController")
 
-//SEARCH
+const {onlyUsers} = require("../app/middlewares/session")
+
+//PÁGINA DE BUSCA
 routes.get("/search", SearchController.index)
 
-//PRODUCTS
-routes.get('/create', ProductController.create)
+//CADASTRO DE PRODUTOS
+routes.get('/create', onlyUsers, ProductController.create)
 routes.get("/:id", ProductController.show)
-routes.get('/:id/edit', ProductController.edit)
-routes.post('/',multer.array("photos", 6), ProductController.post)
-routes.put("/",multer.array("photos", 6), ProductController.put)
-routes.delete("/", ProductController.delete)
+routes.get('/:id/edit', onlyUsers, ProductController.edit)
+routes.post('/', onlyUsers, multer.array("photos", 6), ProductController.post)
+routes.put("/", onlyUsers, multer.array("photos", 6), ProductController.put)
+routes.delete("/", onlyUsers, ProductController.delete)
 
 module.exports = routes 
