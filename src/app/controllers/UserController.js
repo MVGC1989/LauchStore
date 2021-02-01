@@ -13,7 +13,7 @@ module.exports = {
         user.cpf_cnpj = formatCpfCnpj(user.cpf_cnpj)
         user.cep = formatCep(user.cep)
 
-        return res.render("/user/index", {user})
+        return res.render("user/index", {user})
     },
 
     async post(req , res){

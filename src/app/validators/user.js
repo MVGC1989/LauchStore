@@ -33,7 +33,7 @@ async function post (req , res , next){
     const fillAllFields = checkAllFields(req.body)
 
     if(fillAllFields){
-        return res,render("user/register", fillAllFields)
+        return res.render("user/register", fillAllFields)
     }
 
      //checar se usuário já existe
@@ -69,7 +69,7 @@ async function update(req, res, next){
     const fillAllFields = checkAllFields(req.body)
 
     if(fillAllFields){
-        return res,render("user/index", fillAllFields)
+        return res.render("user/index", fillAllFields)
     }
 
     //checando se a senha foi preenchida
