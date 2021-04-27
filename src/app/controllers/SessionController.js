@@ -48,7 +48,7 @@ module.exports ={
                     <h2>Perdeu sua senha?</h2>
                     <p>Não se preocupe, clique no link abaixo para recuperar sua senha.</p>
                 <p>
-                    <a href="htpp://localhost:3000/users/password-reset?token=${token}" target="_blank">
+                    <a href="http://localhost:3000/users/password-reset?token=${token}" target="_blank">
                     RECUPERAR SENHA
                     </a>
                 </p>
@@ -69,7 +69,7 @@ module.exports ={
     },
 
     resetForm(req, res){
-        return res,render("session/password-reset", {token: req.query.token})
+        return res.render("session/password-reset", {token: req.query.token})
     },
 
     async reset(req, res){

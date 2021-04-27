@@ -29,7 +29,7 @@ module.exports = {
 
     async post(req , res){
         try {
-            let { name, email, password, cpf_cnpj, cep, adress} = req.body
+            let { name, email, password, cpf_cnpj, cep, address} = req.body
 
             passwordHash = await hash(password , 8)
             cpf_cnpj = cpf_cnpj.replace(/\D/g,"")
@@ -96,13 +96,9 @@ module.exports = {
 
             let promiseResults =await Promise.all(allFilesPromise)
 
-            //Rodar remoção do usuário
-            await User.delete(req.body.id)
-            req.body.destroy()
-
             //Remover as imagens da pasta public
-            promiseResults.map(results => {
-                results.rows.map(file =>{
+            promiseResults.map(files => {
+                files.map(file =>{
                     try{
                         unlinkSync(file.path)
                     }catch(error){
@@ -110,6 +106,10 @@ module.exports = {
                     }
                 })
             })
+
+            //Rodar remoção do usuário
+            await User.delete(req.body.id)
+            req.session.destroy()
 
             return res.render("session/login",{
                 success: "Conta deletada com sucesso !"

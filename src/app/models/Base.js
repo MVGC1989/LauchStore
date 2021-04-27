@@ -69,7 +69,7 @@ const Base = {
             let update = []
 
             Object.keys(fields).map((key) => {
-                const line = `${key} = '${fields[key]}`
+                const line = `${key} = '${fields[key]}'`
                 update.push(line)
 
             })

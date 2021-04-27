@@ -32,14 +32,14 @@
 </section>
 
 <script>
-    const form_delete = document.querySelector("#form_delete")
-
-    form_delete.addEventListener("submit", function(event){
-        const confirmation = confirm("Deseja deletar ?")
+    const formDelete = document.querySelectorAll("#form_delete")
+    
+    formDelete.forEach(form => form.addEventListener("click", (e) =>{
+        const confirmation = confirm("Tem certeza que deseja deletar ?") 
             if(!confirmation){
-                event.preventDefault()
-    }
-})
+                e.preventDefault()
+            }
+    }))
 </script>
 
 
