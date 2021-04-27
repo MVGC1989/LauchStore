@@ -1,5 +1,9 @@
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+
 DROP DATABASE IF EXISTS launchstoredb; -- verificar se a tabela existe
 CREATE DATABASE launchstoredb; -- criar um db
+
 
 CREATE TABLE "products" (
   "id" SERIAL PRIMARY KEY,
@@ -104,3 +108,14 @@ ADD CONSTRAINT files_product_id_fkey
 FOREIGN KEY ("product_id")
 REFERENCES "products" ("id")
 ON DELETE CASCADE;
+
+--	TO RUN SEEDS
+DELETE FROM products;
+DELETE FROM users;
+DELETE FROM files;
+
+--RESTART SEQUENCE AUTO_INCREMENT FROM TABLES IDS
+
+ALTER SEQUENCE products_id_seq RESTART WITH 1;
+ALTER SEQUENCE users_id_seq RESTART WITH 1;
+ALTER SEQUENCE files_id_seq RESTART WITH 1;
