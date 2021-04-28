@@ -45,8 +45,8 @@
             </div>
 
             <div class="photos_preview">
-                {% if files %}
-                    {% for image in files %}
+                {% if product.files %}
+                    {% for image in product.files %}
                         <div class="photo" id="{{image.id}}">
                             <img src="{{image.src}}" alt="{{image.name}}">
                                 <i class="material-icons"
@@ -71,11 +71,11 @@ accept --> aceita todo tipo de imagem #}
                 type="text" 
                 name="price"
                 placeholder="Digite o preço do produto..."
-                value="{{product.price}}"
+                value="{{product.formattedPrice}}"
                 onkeydown= "Mask.apply(this, 'formatBRL')"> 
         </div>
     {% if product.old_price %}
-        <input type="hidden" name="old_price" value="{{product.old_price}}">
+        <input type="hidden" name="old_price" value="{{product.formattedOldPrice}}">
     {% endif %}
 </div>
 
@@ -90,7 +90,7 @@ accept --> aceita todo tipo de imagem #}
         </div>
 </div>
 
-{% if (products.status =="1") or (products.status == "0") %} 
+{% if (product.status =="1") or (product.status == "0") %} 
 {#com esse if, o campo de disponobilidade só vai aparecer quando for editar o produto
 quando for criar ele não vai aparecer#}
 <div class="item">
