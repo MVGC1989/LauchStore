@@ -2,6 +2,7 @@ const express = require("express")
 const routes = express.Router() 
 
 const multer = require("../app/middlewares/multer")
+
 const SearchController = require("../app/controllers/SearchController")
 const ProductController = require("../app/controllers/ProductController")
 
