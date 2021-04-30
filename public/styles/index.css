@@ -295,150 +295,6 @@ form .item .photos_preview img{
     opacity: 1;
 }
 
-/*PRODUCT VIEW*/
-
-.product_single{
-    background-color: white;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 24px;
-    padding: 32px 24px;
-    margin: 32px auto;
-    box-shadow: 2px 2px 2px 0px rgba(63, 63, 63, 0.5);
-    border: 1px solid #efefef;
-    border-radius: 4px;
-}
-
-/*PRODUCT SINGLE GALLERY*/
-
-.product_single .gallery{
-    width: 100%;
-}
-
-.product_single .highlight > img{
-    width: 100%;
-    height: 280px;
-    object-fit: none;
-    object-position: 50% 50%;
-    border: 1px solid #efefef;
-    cursor: zoom-in;
-}
-
-.product_single .gallery_preview{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap:2px;
-}
-
-.product_single .gallery_preview img{
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
-    opacity: 0.6;
-    cursor: pointer;
-    transition: 200ms;
-}
-
-.product_single .gallery_preview img:hover,
-.product_single .gallery_preview img.active{
-    opacity: 1;
-}
-
-/*LIGHTBOX PRODUCT GALLERY*/
-
-.product_single .highlight .lightbox_target{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    overflow:hidden;
-    z-index: 100;
-    left: 0;
-    top: -100%;
-    opacity: 0;
-    transition: opacity 400ms;   
-}
-
-.product_single .highlight .lightbox_target img{
-    margin: auto;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: white;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
-}
-
-.product_single .highlight a.lightbox_close{
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    position: absolute;
-    right: 0;
-    top: -80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 400ms;
-
-}
-
-/*PRODUCT SINGLE INFO*/
-
-.product_single .info{
-    display: grid;
-    grid-template-rows: auto 40px 2fr 1fr;
-    /*rows mexe com as linhas cada linha pode ter um tamanho*/
-}
-
-.product_single .info h1{
-    font-size: 32px;
-    line-height: 42px;
-    color: #333;
-    text-transform: uppercase;
-}
-
-.product_single .info .published{
-    color: #888;
-    font-size: 12px;
-    line-height: 22px;
-    letter-spacing: 0.4px;
-}
-
-/*PRICE BUY*/
-.product_single .price_buy{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 8px;
-    border-top: 1px solid #eee;
-}
-
-.product_single .price_buy .price{
-    font-size: 24px;
-    color: #333;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-}
-
-.product_single .price_buy .price .old{
-    text-decoration: line-through;
-    color: #999;
-    font-size: 14px;
-    font-weight: normal;
-    margin-left: 8px;
-}
-.product_single .price_buy .buy button{
-    background-color: var(--secondary-color);
-    font-size: 14px;
-    letter-spacing: 0.4px;
-}
-
 /*===SHOP===*/
 
 .shop h2{
@@ -498,7 +354,7 @@ form .item .photos_preview img{
 
 .search-products .header h2{
     font-size: 26px;
-    text-transform: capitalize;
+    text-transform: uppercase;
     margin-bottom: 8px;
 }
 
@@ -521,12 +377,6 @@ form .item .photos_preview img{
 .search-products nav ul li a:hover{
     color:black;
     font-weight: bold;
-}
-
-/*=== USER REGISTER ===*/
-
-.user-register.container.form{
-    max-width: 500px;
 }
 
 /*.form input[name="email"],

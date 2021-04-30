@@ -1,35 +1,32 @@
 {% extends "layout.njk" %}
 
+{% import "parts/card.njk" as card %}
+
 {% block content %}
 
+    {% call card.render('Detalhes', 'users-dashboard container')%}
+        <form  method="POST" action="/users?_method=PUT">
 
-<section class="user-dashboard container form">
-    <form  method="POST" action="/users?_method=PUT">
+            <div class="fields">
+                {% include "user/fields.njk" %}
+                <input 
+                    type="hidden" 
+                    name="id" 
+                    value={{user.id}}>
+            </div>
 
-        <div class="header">
-            <h3>Detalhes</h3>
-        </div>
-        
-        <div class="fields">
-            {% include "user/fields.njk" %}
+            <button class="button edit" type="submit">Atualizar</button>
+        </form>
+
+        <form  action="/users?_method=DELETE" method="POST"> 
             <input 
                 type="hidden" 
                 name="id" 
-                value={{user.id}}>
-        </div>
-
-        <button class="button edit" type="submit">Atualizar</button>
-    </form>
-
-    <form  action="/users?_method=DELETE" method="POST"> 
-        <input 
-            type="hidden" 
-            name="id" 
-            value= "{{user.id}}">
+                value= "{{user.id}}">
             
-            <button class="button delete" id= "form_delete" type="submit">Deletar</button>
-    </form>
-</section>
+                <button class="button delete" id= "form_delete" type="submit">Deletar</button>
+        </form>
+    {%endcall%}
 
 <script>
     const formDelete = document.querySelectorAll("#form_delete")

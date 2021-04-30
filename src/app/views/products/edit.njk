@@ -1,44 +1,40 @@
 {% extends "layout.njk" %}
 
+{% import "parts/card.njk" as card %}
+
 {% block content %}
+    {% call card.render('Editar Produto', 'product-create container')%}
 
+        <form  method="POST" action="/products?_method=PUT" enctype="multipart/form-data">
+            <div class="fields">
+                {% include "products/fields.njk" %}
+                <input 
+                    type="hidden" 
+                    name="id" 
+                    value={{product.id}}>
+            </div>
 
-<section class="container form">
-    <form  method="POST" action="/products?_method=PUT" enctype="multipart/form-data">
+            <button class="button edit" type="submit" onclick="Validate.allFields(event)">Atualizar</button>
+        </form>
 
-        <div class="header">
-            <h3>Editar Produto</h3>
-        </div>
-        
-        <div class="fields">
-            {% include "products/fields.njk" %}
+        <form  action="/products?_method=DELETE" method="POST"> 
             <input 
                 type="hidden" 
                 name="id" 
-                value={{product.id}}>
-        </div>
-
-        <button class="button edit" type="submit">Atualizar</button>
-    </form>
-
-    <form  action="/products?_method=DELETE" method="POST"> 
-        <input 
-            type="hidden" 
-            name="id" 
-            value= "{{product.id}}">
+                value= "{{product.id}}">
             
             <button class="button delete" id= "form_delete" type="submit">Deletar</button>
-    </form>
-</section>
-
-<script>
-    const formDelete = document.querySelectorAll("#form_delete")
+        </form>
+    {%endcall%}
     
-    formDelete.forEach(form => form.addEventListener("click", (e) =>{
-        const confirmation = confirm("Tem certeza que deseja deletar ?") 
-            if(!confirmation){
-                e.preventDefault()
-            }
-    }))
-</script>
+    <script>
+        const formDelete = document.querySelectorAll("#form_delete")
+    
+        formDelete.forEach(form => form.addEventListener("click", (e) =>{
+            const confirmation = confirm("Tem certeza que deseja deletar ?") 
+                if(!confirmation){
+                    e.preventDefault()
+                }
+        }))
+    </script>
 {% endblock content %}

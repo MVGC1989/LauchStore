@@ -324,6 +324,24 @@ const Validate ={
             error,
             value
         }
+    },
+
+    //Validação dos campos em branco
+    allFields(e){
+        const items = document.querySelectorAll('.item input, .item select, .item textarea')
+
+        for (item of items){
+            if(item.value == ""){
+                const message = document.createElement('div')
+                message.classList.add("messages")
+                message.classList.add('error')
+                message.style.position = 'fixed'
+                message.innerHTML = "Por favor, preencha todos os campos!"
+                document.querySelector('body').append(message)
+
+                e.preventDefault()
+            }
+        }
     }
 }
 
