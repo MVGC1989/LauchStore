@@ -141,3 +141,11 @@
 .product-create{
     max-width: 700px;
 }
+
+.product_single .unavailable{
+    font-size: 14px;
+    color: #ccc;
+    font-weight: bold;
+    background-color: #eee;
+    padding: 8px 16px;
+}

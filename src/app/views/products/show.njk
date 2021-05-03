@@ -4,6 +4,7 @@
 
 {% block content %}
     {% call card.render('', 'product_single container')%}
+        
         <div class="gallery">
             <div class="highlight">
                 {% if not product.files[0] %} {#se não houver imagem #}
@@ -61,19 +62,23 @@
                         {% endif %}
                 </div>
 
-                <div class="buy">{#se estiver indisponivel ou sem estoque terei botoes diferentes#}
-                    {% if product.status == 0 %}
-                        <p class="unavailable">Indisponível</p>
-                    {%elseif product.quantity == 0%}
-                        <p class="unavailable">Fora de Estoque</p>
-                    {% else %}
-                        <form action="/users/orders" method='POST'>
-                            <input type="hidden" name="id" value="{{product.id}}">
-                            <button class="button">Comprar</button>
-                        </form>
-                    {% endif %}
-                </div>
-        </div>
+                {% if (session.userId) and (product.user_id == session.userId)%}
+                    <p class="unavailable"> Produto cadastrado por você</p>
+                {% else %}
+                    <div class="buy">{#se estiver indisponivel ou sem estoque terei botoes diferentes#}
+                        {% if product.status == 0 %}
+                            <p class="unavailable">Indisponível</p>
+                        {%elseif product.quantity == 0%}
+                            <p class="unavailable">Fora de Estoque</p>
+                        {% else %}
+                            <form action="/users/orders" method='POST'>
+                                <input type="hidden" name="id" value="{{product.id}}">
+                                <button class="button">Comprar</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
         </div>
     {%endcall%}
 
