@@ -5,9 +5,11 @@ const HomeController = require("../app/controllers/HomeController")
 
 const products = require("./products")
 const users = require("./users")
+const cart = require("./cart")
 
 routes.use("/products", products)
 routes.use("/users", users)//vai colocar um /users em todas as rotas dos usuários
+routes.use("/cart", cart)
 
 
 //HOME
