@@ -3,8 +3,28 @@
 {% import "parts/card.njk" as card %}
 
 {% block content %}
+    {% if (cart.items) and (cart.items.length < 1)%}
+        {% call card.render('', 'cart-empty container')%}
+            <div class= "empty"></div>
+            <p>Carrinho Vazio</p>
+            <a href="/products/search" class="button">Comprar</a>
+        {%endcall%}
+        <script src="/lottie.min.js"></script>
+    
+    <script>
+        const element = document.querySelector('.empty')
 
-    {% call card.render('Carrinho', 'cart container')%}
+        lottie.loadAnimation({
+        container: element, // the dom element that will contain the animation
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        path: '/17990-empty-cart.json' // the path to the animation json
+})
+    </script>
+    {% else %}
+
+        {% call card.render('Carrinho', 'cart container')%}
         <div class="header">
             <p>Produto</p>
             <p>Preço</p>
@@ -62,5 +82,7 @@
                 </button>
             </form>
         </div>
-    {%endcall%}
+        {%endcall%}
+
+    {% endif %}
 {% endblock content %}

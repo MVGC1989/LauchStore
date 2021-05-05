@@ -3,7 +3,6 @@ const routes = express.Router()
 
 const SessionController = require("../app/controllers/SessionController")
 const UserController = require("../app/controllers/UserController")
-const OrderController = require("../app/controllers/OrderController")
 
 const UserValidator = require("../app/Validators/user")
 const SessionValidator = require("../app/Validators/session")
@@ -35,8 +34,7 @@ routes.delete('/', UserController.delete)
 
 routes.get('/ads', UserController.ads)
 
-//PEDIDOS DE COMPRA
-routes.post('/orders', onlyUsers, OrderController.post)
+
 
 
 module.exports = routes 

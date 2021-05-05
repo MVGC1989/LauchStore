@@ -33,3 +33,9 @@
 .order-error .error-lottie{
     height: 200px;
 }
+
+/*Carrinho Vazio Animação*/
+
+.empty{
+    height: 200px;
+}

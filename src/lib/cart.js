@@ -73,7 +73,7 @@ const Cart = {
         //atualizar carrinho
         this.total.quantity--
         this.total.price -= inCart.product.price
-        this.total.formatPrice = formatPrice(this.total.price)
+        this.total.formattedPrice = formatPrice(this.total.price)
 
         if(inCart.quantity < 1 ){
             this.items = this.items.filter(item => 
@@ -104,7 +104,7 @@ const Cart = {
     getCartItem(productId){
         return this.items.find(item => item.product.id == productId)
     }
-}
+} 
 
 module.exports = Cart
 
