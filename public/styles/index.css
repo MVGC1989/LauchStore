@@ -130,6 +130,7 @@ nav.primary ul li a{
     align-items: center;
     color: white;
     transition: 200ms;
+    font-size: 18px;
 }
 
 nav.primary ul li a:hover{

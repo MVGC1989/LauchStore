@@ -1,9 +1,11 @@
 const LoadProductService = require('../services/LoadProductService')
+const LoadOrderService = require('../services/LoadOrderService')
 const User = require("../models/User")
 const Order = require("../models/Order")
 
 const mailer = require('../../lib/mailer')
 const Cart = require('../../lib/cart')
+
 
 const email = (seller, product, buyer) => `
 <h2>Olá ${seller.name}</h2>
@@ -23,6 +25,20 @@ const email = (seller, product, buyer) => `
 `
 
 module.exports = {
+    async index(req , res){
+        const orders = await LoadOrderService.load("orders", {
+            where:{buyer_id: req.session.userId}})
+
+        return res.render("orders/index", {orders})
+    },
+
+    async sales(req, res){
+        const sales = await LoadOrderService.load("orders", {
+            where:{seller_id: req.session.userId}})
+
+        return res.render("orders/sales", {sales})
+    },
+    
     async post(req , res){
         try {
             // pegar os produtos do carrinho
@@ -72,11 +88,22 @@ module.exports = {
 
             await Promise.all(createOrdersPromise)
 
+            //limpar o carrinho
+            delete req.session.cart
+            Cart.init()
+
             //notificar usuário com menssagem de sucesso
             return res.render('orders/success')
         } catch (error) {
             console.error(error)
             return res.render('orders/error')
         }
+    },
+
+    async show (req, res){
+        const order = await LoadOrderService.load("order", {
+            where: {id: req.params.id}})
+        
+        return res.render("orders/details", {order})
     }
 }
