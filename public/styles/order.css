@@ -42,9 +42,16 @@
 
 /*MEUS PEDIDOS*/
 
+.container{
+    --status-open: rgb(5, 154, 199); 
+    --status-sold:rgb(8, 211, 35);
+    --status-canceled: rgb(214, 35, 35);
+}
+
+
 .orders .item-container{
     display: grid;
-    grid-template-columns: 1fr 80px 150px 100px;
+    grid-template-columns: 1fr 80px 150px 100px 100px;
     gap: 24px;
     align-items: center;
     color: #444;
@@ -105,14 +112,104 @@
 }
 
 .orders .status.open{
-    background-color: rgb(0, 185, 241);
+    background-color: var(--status-open);
 }
 
 .orders .status.sold{
-    background-color: rgb(8, 211, 35);
+    background-color: var(--status-sold);
 }
 
 .orders .status.canceled{
-    background-color: rgb(214, 35, 35);
+    background-color:  var(--status-canceled);
+}
+
+/*DETALHES DO PEDIDO*/
+
+.order-detail{
+    max-width: 700px;
+}
+
+.order-detail .info{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 16px;
+    gap: 16px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.order-detail .info h4{
+    color: var(--primary-color);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+}
+
+.order-detail .info .status{
+    text-align:right ;
+}
+
+.order-detail .info .status p{
+    color: #777;
+    font-style: italic;
+    font-size: 12px;
+}
+
+.order-detail .info .status.open h2{
+    color:  var(--status-open);
+}
+
+.order-detail .info .status.sold h2{
+    color:  var(--status-sold);
+}
+
+.order-detail .info .status.canceled h2{
+    color:  var(--status-canceled);
+}
+
+.order-detail .product{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 16px 0;
+    margin-bottom: 16px;
+}
+
+.order-detail img{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-right: 16px;
+    border-radius: 8px;
+}
+
+.order-detail .price{
+    color: #555;
+    font-weight: bold;
+    text-align: right;
+    flex: 1;
+}
+
+.order-detail .quantity{
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.order-detail .total{
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.order-detail .total span{
+    font-size:14px ;
+    font-weight: 500px;
+    margin-right: 8px;
 }
 

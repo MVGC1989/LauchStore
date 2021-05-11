@@ -1,0 +1,80 @@
+.dropdown-container{
+    position: relative;
+}
+
+.dropdown-container:hover .dropdown{
+    opacity: 1;
+    visibility: initial;
+}
+
+ul.dropdown{
+    position: absolute;
+
+    top: 32px;
+    left: 0;
+    margin-top: 4px;
+    padding: 8px 0;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 4px 8px -4px rgba(0,0,0,.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 200ms;
+    z-index: 1; /*o menu se sobrepoe, eixo z é profundidade*/
+}
+
+ul.dropdown li a,
+ul.dropdown li button{
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 4px;
+    background-color: white;
+    border-top: 1px solid #eee;
+}
+
+ul.dropdown li:first-child a{
+    border: none;
+}
+
+ul.dropdown li:hover a{
+    background-color: #eee;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+ul.dropdown li:hover button{
+    background-color: #eee;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#sold:hover{
+    color: var(--status-sold);
+}
+
+#cancel:hover{
+    color: var(--status-canceled);
+}
+
+/*Ações*/
+
+.actions.dropdown-container{
+    display: flex;
+    align-items: center;
+    height: 48px;
+    cursor: pointer;
+    padding: 0 16px;
+}
+
+.actions.dropdown-container:hover{
+    background-color: white ;
+}

@@ -131,10 +131,12 @@ nav.primary ul li a{
     color: white;
     transition: 200ms;
     font-size: 18px;
+    height: 30px;
 }
 
 nav.primary ul li a:hover{
     color: var(--primary-color);
+    font-weight: bold;
 }
 
 nav.primary ul li a i{
