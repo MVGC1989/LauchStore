@@ -9,6 +9,19 @@
             <p>Nenhum Pedido</p>
             <a href="/products/search" class="button">Comprar</a>
         {%endcall%}
+        <script src="/lottie.min.js"></script>
+    
+        <script>
+            const element = document.querySelector('.empty')
+
+            lottie.loadAnimation({
+            container: element, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            path: '/6926-sad-package.json' // the path to the animation json
+            })
+        </script>
     {% else %}
 
         {% call card.render('Meus Pedidos', 'orders container')%}

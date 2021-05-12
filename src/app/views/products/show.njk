@@ -63,7 +63,7 @@
                 </div>
 
                 {% if (session.userId) and (product.user_id == session.userId)%}
-                    <p class="unavailable"> Produto cadastrado por você</p>
+                    <p class="unavailable"> Você é o Vendedor</p>
                 {% else %}
                     <div class="buy">{#se estiver indisponivel ou sem estoque terei botoes diferentes#}
                         {% if product.status == 0 %}
@@ -72,7 +72,7 @@
                             <p class="unavailable">Fora de Estoque</p>
                         {% else %}
                             <form action="/cart/{{product.id}}/add-one" method='POST'>
-                                <button class="button">Adicionar ao Carrrinho</button>
+                                <button class="bnt-buy">Adicionar ao Carrrinho</button>
                             </form>
                         {% endif %}
                     </div>

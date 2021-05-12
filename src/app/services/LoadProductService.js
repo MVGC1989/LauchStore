@@ -29,7 +29,7 @@ async function format(product){
 const LoadService = {
     load(service, filter) {
         this.filter = filter
-        return this[service](filter)
+        return this[service]()
     },
     async product(){
         try {

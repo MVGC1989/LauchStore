@@ -9,7 +9,8 @@
     <div class="items">
         {% for product in products %}
             <div class="product">
-                <div class="image" style="background-image: url({{"'"+product.image+"'" if product.image else "'"+'//placehold.it/500x500?text=Produto sem imagem'+"'"}})">
+                <div class="image-card">
+                    <img src="{{product.files[0].src}}" alt="">
                 </div>
 
                 {% if product.formattedOldPrice != product.formattedPrice %}
