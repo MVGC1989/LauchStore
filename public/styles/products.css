@@ -161,6 +161,7 @@
     padding: 8px 16px;
     width: 200px;
     text-align: center;
+    border-radius: 4px;
 }
 
 .product_single .description{

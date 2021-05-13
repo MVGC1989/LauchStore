@@ -59,6 +59,7 @@
     font-size: 14px;
     font-weight: 300;
     color: rgb(74, 74, 74);
+    font-style: italic;
 }
 
 .users-ads .item .actions{
@@ -70,7 +71,7 @@
     margin-right: 16px;
     color: var(--primary-color);
     font-size: 15px;
-    transition: 0.8ms;
+    transition: 0.4s;
 }
 
 .users-ads .item .actions a:hover{

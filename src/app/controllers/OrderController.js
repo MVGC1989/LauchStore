@@ -48,7 +48,7 @@ module.exports = {
             const buyer_id = req.session.userId 
 
             const filteredItems = cart.items.filter(item =>
-                item.product.user != buyer_id
+                item.product.user_id != buyer_id
             )
 
             //criar pedido
@@ -68,7 +68,7 @@ module.exports = {
                 })
 
                 //pegar dados do produto
-                product = await LoadProductService.load('product', {where: {id: product_id}})
+                product = await LoadProductService.load('product', {where: {id: product.id}})
 
                 //dados do vendedor
                 const seller = await User.findOne({where: {id: seller_id}})

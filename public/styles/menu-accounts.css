@@ -4,10 +4,10 @@
 
 .accounts .submenu{
     position: absolute;
-    left: -10px;
+    left: -5px;
     top: 1px;
     margin-top: 30px;
-    width: 180px;
+    width: 150px;
     display: block;
     background-color: white;
     border-radius: 4px;

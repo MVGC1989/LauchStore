@@ -1,13 +1,9 @@
 <header>
     <div class="container">
-        <a href="/">
-            <div class="logo">
-                <h1>LaunchStore</h1>
-                <h2>Compra e Venda</h2>
-            </div>
-        </a>
-
         <form class="search"  method="GET" action="/products/search">
+        <button >
+            <i class="material-icons">search</i>
+        </button>
             <input 
                 type="text" 
                 name="filter" 
@@ -17,7 +13,12 @@
                 {% endif %}
                 >
         </form>
-
+        <a href="/">
+            <div class="logo">
+                <h1>LaunchStore</h1>
+                <h2>Compra e Venda</h2>
+            </div>
+        </a>
         <nav class="primary">
             <ul>
                 <li>

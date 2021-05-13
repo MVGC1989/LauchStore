@@ -135,8 +135,8 @@
 /*carrinho menu*/
 
 header div.container{
-    grid-template-columns: 220px auto 330px;
-    grid-gap:8px;
+    grid-template-columns: 300px 1fr 350px;
+    grid-gap:100px;
 }
 
 li.cart a{

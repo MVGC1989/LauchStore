@@ -39,6 +39,11 @@ const Base = {
         return results.rows
     },
 
+    async findOneWithDeleted(filters){
+        const results = await find(filters, `${this.table}_with_deleted`)
+        return results.rows[0]
+    },
+
     async create (fields){
         try {
             let keys = [],
@@ -84,7 +89,7 @@ const Base = {
         
     },
 
-    async delete(id){
+    delete(id){
         return db.query(`DELETE FROM ${this.table} WHERE id = $1`, [id])
     }
 }

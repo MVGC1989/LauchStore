@@ -26,7 +26,7 @@ body {
 
 .container{
     width: 90%;
-    max-width: 940px;
+    
     margin: 0 auto;
 }
 
@@ -78,7 +78,7 @@ header, footer{
     background-color: black;
     color: white;
     width: 100%;
-    padding: 32px 0;
+    padding: 24px 0;
     text-align: center;
 }
 
@@ -90,15 +90,14 @@ header div.container{
 }
 
 header div.container a{
-    justify-self: start;
+    justify-self: center;
 }
 
 /* === LOGO ===*/
 
 .logo h1{
     color:white;
-    font-size: 36px;
-    line-height: 46px;
+    font-size: 40px;
 }
 
 .logo h2{
@@ -110,12 +109,31 @@ header div.container a{
 }
 
 /*=== HEADER SEARCH ===*/
+.search button {
+    display: flex;
+    position: absolute;
+    margin-top: 2px;
+    margin-left: -40px;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+.search button i{
+    font-size: 32px;
+}
 
 .search input{
     width: 100%;
     padding: 8px 16px;
-    border-radius: 2px;
+    border-radius: 32px;
     font-size: 16px;
+}
+
+.search input::placeholder{
+    text-align: center;
+    font-weight: bold;
+    color: #777;
 }
 
 /*=== PRIMARY MENU ===*/
@@ -385,9 +403,10 @@ form .item .photos_preview img{
 }
 
 .product .image-card img{
-    object-fit:contain;
+    object-fit:cover;
     width: 300px;
-    height: 300px;
+    height: 200px;
+    border-radius: 6px;
 }
 
 /*.form input[name="email"],
