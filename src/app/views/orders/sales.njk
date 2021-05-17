@@ -4,7 +4,7 @@
 
 {% block content %}
     {% if (sales.length < 1)%}
-        {% call card.render('', 'cart-empty container')%}
+        {% call card.render('', 'cart-empty contain')%}
             <div class= "empty"></div>
             <p>Nenhuma Venda</p>
             <a href="/ads/create" class="button">Anuncie Agora</a>
@@ -12,7 +12,7 @@
 
     {% else %}
 
-        {% call card.render('Minhas Vendas', 'sales orders container')%}
+        {% call card.render('Minhas Vendas', 'sales orders contain')%}
             <div>
                 {% for sale in sales %}
                     <div class="item-container">

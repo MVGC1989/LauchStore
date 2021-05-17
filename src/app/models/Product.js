@@ -25,15 +25,15 @@ module.exports = {
             `
         
         if(category){
-            query += `AND products.category_id = ${category}` 
+            query += ` AND products.category_id = ${category}` 
         }
 
         if(filter){
-            query += `AND (products.name ILIKE '%${filter}%'
+            query += ` AND (products.name ILIKE '%${filter}%'
             OR products.description ILIKE '%${filter}%')`
         }
 
-        query += `AND status !=0`
+        query += ` AND status !=0`
         
         const results = await db.query(query)
         return results.rows

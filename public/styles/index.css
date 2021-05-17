@@ -322,12 +322,19 @@ form .item .photos_preview img{
     margin: 48px 0;
 }
 
+.contain{
+    max-width: 960px;
+    margin: auto;
+    width: 100%;
+
+}
 .items{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap:32px;
-    margin-top: 48px;
-    margin-bottom: 56px;
+    grid-gap:30px;
+    margin:auto;
+    margin-bottom: 48px;
+    width: 100%;
 }
 
 .shop .product{
@@ -375,10 +382,17 @@ form .item .photos_preview img{
     color: #333;
 }
 
+.search-products aside{
+    margin-left: 80px;
+    width: 100%;
+    border-right: 1px solid #999;
+}
+
 .search-products .header h2{
     font-size: 26px;
     text-transform: uppercase;
     margin-bottom: 8px;
+    word-wrap: break-word;
 }
 
 .categories h4{

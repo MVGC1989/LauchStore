@@ -4,7 +4,7 @@
 
 {% block content %}
     {% if (orders.length < 1)%}
-        {% call card.render('', 'cart-empty container')%}
+        {% call card.render('', 'cart-empty contain')%}
             <div class= "empty"></div>
             <p>Nenhum Pedido</p>
             <a href="/products/search" class="button">Comprar</a>
@@ -24,7 +24,7 @@
         </script>
     {% else %}
 
-        {% call card.render('Meus Pedidos', 'orders container')%}
+        {% call card.render('Meus Pedidos', 'orders contain')%}
             <div>
                 {% for order in orders %}
                     <div class="item-container">

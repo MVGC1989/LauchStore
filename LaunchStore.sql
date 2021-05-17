@@ -155,7 +155,9 @@ ALTER TABLE products RENAME TO products_with_deleted;
 ALTER TABLE products_without_deleted RENAME TO products;
 
 --	TO RUN SEEDS
-DELETE FROM products;
+DROP RULE IF EXISTS "delete_product" ON "products_with_deleted";
+
+DELETE FROM products_with_deleted;
 DELETE FROM users;
 DELETE FROM files;
 
